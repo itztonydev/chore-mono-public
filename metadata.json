@@ -1,0 +1,6 @@
+{
+  "name": "Roommate Chore & Expense Roulette",
+  "description": "Production-ready FastAPI backend & interactive DSA visualizer for roommate chore circular rotation, expense ledger, directed graph debt simplification, undo stack, and sarcastic alerts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
