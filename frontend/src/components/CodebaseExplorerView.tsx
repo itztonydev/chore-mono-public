@@ -11,7 +11,7 @@ interface CodeFile {
 
 const BACKEND_FILES: CodeFile[] = [
   {
-    path: '/app/dsa_engines/circular_queue.py',
+    path: 'backend/dsa_engines/circular_queue.py',
     name: 'circular_queue.py',
     category: 'DSA Engine',
     description: 'Circular Queue (Ring Buffer) data structure for fair O(1) chore turn shifts with lookahead.',
@@ -56,7 +56,7 @@ class ChoreCircularQueue:
         return self._members[self._current_index], self._current_index`,
   },
   {
-    path: '/app/dsa_engines/graph_debt_simplifier.py',
+    path: 'backend/dsa_engines/graph_debt_simplifier.py',
     name: 'graph_debt_simplifier.py',
     category: 'DSA Engine',
     description: 'Min-Cash-Flow Greedy Directed Graph Algorithm to compress multi-party debt vectors.',
@@ -118,7 +118,7 @@ class DebtSimplificationEngine:
         return simplified`,
   },
   {
-    path: '/app/dsa_engines/activity_stack.py',
+    path: 'backend/dsa_engines/activity_stack.py',
     name: 'activity_stack.py',
     category: 'DSA Engine',
     description: 'LIFO Undo Stack engine managing reversible mutations.',
@@ -164,7 +164,7 @@ class ActivityStack:
         return len(self._stack) == 0`,
   },
   {
-    path: '/app/core/crypto_ed25519.py',
+    path: 'backend/core/crypto_ed25519.py',
     name: 'crypto_ed25519.py',
     category: 'Core & Crypto',
     description: 'Ed25519 Curve25519 keypair generation, signature signing and verification.',
@@ -205,7 +205,7 @@ class Ed25519CryptoService:
             return False`,
   },
   {
-    path: '/app/core/uuid7.py',
+    path: 'backend/core/uuid7.py',
     name: 'uuid7.py',
     category: 'Core & Crypto',
     description: 'RFC 9562 Monotonic UUIDv7 Generator with dedicated millisecond sequence counter.',
@@ -248,7 +248,7 @@ def uuid7_str() -> str:
     return str(uuid7())`,
   },
   {
-    path: '/app/models/user.py',
+    path: 'backend/models/user.py',
     name: 'user.py',
     category: 'Models & DB',
     description: 'SQLAlchemy User model with UUID7, Bcrypt hash, Google Sub ID, and Ed25519 public key.',
@@ -258,7 +258,7 @@ User Database Model (SQLAlchemy Async).
 from typing import List, Optional
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from app.db.base import Base, UUID7PrimaryKeyMixin, TimestampMixin
+from backend.db.base import Base, UUID7PrimaryKeyMixin, TimestampMixin
 
 class User(Base, UUID7PrimaryKeyMixin, TimestampMixin):
     __tablename__ = "users"
@@ -274,7 +274,7 @@ class User(Base, UUID7PrimaryKeyMixin, TimestampMixin):
     )`,
   },
   {
-    path: '/app/api/v1/endpoints/chores.py',
+    path: 'backend/api/v1/endpoints/chores.py',
     name: 'chores.py',
     category: 'API Endpoints',
     description: 'Chore rotation endpoint, circular queue advance, and sarcastic alerts.',
@@ -284,11 +284,11 @@ Chore Management API Endpoints: Circular Queue Rotation & Sarcastic Alert System
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from app.db.session import get_db
-from app.dsa_engines.circular_queue import ChoreCircularQueue
-from app.dsa_engines.sarcastic_alerts import SarcasticAlertSystem
-from app.models.chore import Chore
-from app.models.household import HouseholdMember
+from backend.db.session import get_db
+from backend.dsa_engines.circular_queue import ChoreCircularQueue
+from backend.dsa_engines.sarcastic_alerts import SarcasticAlertSystem
+from backend.models.chore import Chore
+from backend.models.household import HouseholdMember
 
 router = APIRouter(prefix="/chores", tags=["Chores & Circular Queue"])
 
@@ -340,7 +340,7 @@ export const CodebaseExplorerView: React.FC = () => {
             </div>
             <h2 className="text-2xl font-bold text-white mt-1">Backend Source Code Inspector</h2>
             <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-              Inspect the production Python modules created under <code className="text-emerald-400 font-mono text-xs">/app</code>, including the Circular Queue, Directed Graph Simplifier, UUIDv7, and Ed25519 Cryptography.
+              Inspect the production Python modules created under <code className="text-emerald-400 font-mono text-xs">backend/</code>, including the Circular Queue, Directed Graph Simplifier, UUIDv7, and Ed25519 Cryptography.
             </p>
           </div>
 
