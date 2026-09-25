@@ -1,62 +1,50 @@
-# SIH Buddy // Minimalist-Brutalist Problem Statement Platform
+# Chore Roulette
 
-A responsive, data-dense hackathon problem statement directory and analytics platform engineered in **React (Next.js)** and **Tailwind CSS**, strictly adhering to a **Minimalist-Brutalist** dark mode in a modified **Tokyo Night** palette.
+Act as a Principal Frontend Engineer. We are building the Next.js + Tailwind CSS frontend for the "Roommate Chore & Expense Roulette" API. 
 
----
+DESIGN SYSTEM (STRICT):
 
-## 1. Aesthetic Philosophy: Brutalism Meets Minimalism
+- Minimalist-Brutalist, pure-black (#000000) Tokyo Night theme. 
 
-- **Zero Softness:** Completely stripped of gradients, soft drop-shadows, or rounded borders (`rounded-none` / `borderRadius: { none: '0px' }` globally enforced).
-- **Exposed Structure:** Raw structural grid lines (`#565f89` inactive, `#c0caf5` active, `#24283b` faint).
-- **Monospace Data Density:** Problem IDs, metrics, tech stacks, and telemetry are strictly rendered in Monospace (`JetBrains Mono`).
-- **Grotesque Sans-Serif:** Oversized headline punches rendered in `Space Grotesk`.
-- **Immediate Micro-interactions:** Instant color inversions and solid non-blurred offset block shadows (`4px 4px 0px #bb9af7`, `4px 4px 0px #7dcfff`).
+- Given old tailwind.config.js for more reference
 
----
+- No soft shadows, no gradients, strictly `rounded-none`. 
 
-## 2. Modified Tokyo Night Color Tokens (Pure Black Canvas)
+- Hard offset shadows (e.g., 4px 4px 0px #bb9af7), exposed 1px grid lines, raw monospace typography for all data/numbers.
 
-| Token | Hex Code | Purpose |
-|---|---|---|
-| **Global Canvas** | `#000000` | Pure pitch-black root background |
-| **Card Surface** | `#16161E` | Flat structural card base |
-| **Grid Lines (Inactive)** | `#565f89` | Exposed structural division borders |
-| **Grid Lines (Active)** | `#c0caf5` | Hovered and focused element borders |
-| **Primary Typography** | `#c0caf5` | High-contrast body text |
-| **Secondary Typography** | `#9aa5ce` | Metadata, timestamps, descriptions |
-| **Headline Punch** | `#ffffff` | High-contrast Grotesque typography |
-| **Tokyo Accent Cyan** | `#7dcfff` | Active filters, software badges, primary highlights |
-| **Tokyo Accent Purple**| `#bb9af7` | Hardware badges, compare tags, metrics |
-| **Tokyo Accent Green** | `#9ece6a` | Ministry affiliations, verified criteria |
-| **Tokyo Accent Red**   | `#f7768e` | Critical-need badges, reset triggers, errors |
+PAGE WORKFLOW & ROUTING:
 
----
+1. `/` (Login/Auth): Minimalist form. Session state relies strictly on backend HTTP-only cookies (no local storage for tokens). Redirects to /dashboard on success.
 
-## 3. Core Component Architecture
+2. `/dashboard`: The main hub. Split into two brutalist grid sections: "Task Rotator" (who is on chore duty) and "Expense Tracker" (simplified debt graphs).
 
-1. **`BrutalistSearchBlock` (`frontend/components/BrutalistSearchBlock.tsx`)**
-   - Massive full-width input block with thick border, no border radius, blinking terminal cursor (`▋`), category radios, domain dropdown, and active tag strip.
+3. `/household`: Roster management (add/remove flatmates) and an Activity Log timeline showing recent transactions with "Undo" actions.
 
-2. **`DataGrid` & `ProblemCard` (`frontend/components/DataGrid.tsx`, `frontend/components/ProblemCard.tsx`)**
-   - Exposed grid container with density toggle (`COMPACT` vs `EXPANDED`), sort controls, tabular view toggle, and problem cards with monospace metrics and hard-shadow hover states.
+4. `account`: your account settings
 
-3. **`MinistryFilterMatrix` (`frontend/components/MinistryFilterMatrix.tsx`)**
-   - Border-only ministry rectangles that invert into solid stark color fills upon selection.
+EXECUTION RULES (DO NOT DEVIATE):
 
-4. **`AnalyticsDashboard` (`frontend/components/AnalyticsDashboard.tsx`)**
-   - Telemetry overview with software/hardware ratio, complexity distribution matrix (L1–L4), domain density, and submission volume.
+Step 0: Read my openapi.json file and Treat it as the source of truth for all API endpoints, Build the frontend against this existing API. if problem arise write PROBLEM.md in root and put what workaround is used
 
-5. **`ProblemDetailDrawer` & `ComparisonMatrixModal`**
-   - Slide-out specification inspector and multi-statement comparative matrix.
+Step 1: `globals.css` using Tailwind v4 mapping the brutalist pure-black theme
 
----
+This project was built with [Lovable](https://lovable.dev).
 
-## 4. WCAG AAA Compliance
+## Build with Lovable
 
-All text elements maintain a minimum contrast ratio of 7:1 against pure black (`#000000`):
-- Pure White (`#ffffff` on `#000000`): **21:1**
-- Tokyo Cyan (`#7dcfff` on `#000000`): **12.4:1**
-- Tokyo Purple (`#bb9af7` on `#000000`): **9.8:1**
-- Tokyo Green (`#9ece6a` on `#000000`): **11.2:1**
-- Tokyo Text (`#c0caf5` on `#000000`): **10.5:1**
-- Tokyo Muted (`#9aa5ce` on `#000000`): **7.3:1**
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/63d5aada-ba10-4d44-ab99-acab042e5b86).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+```sh
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
+```
