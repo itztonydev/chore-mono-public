@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture decisions
+
+- Keep dashboard features route-focused: chores at `/dashboard`, expenses at `/expenses`, and history/undo at `/activity`, so each primary workflow remains scannable.

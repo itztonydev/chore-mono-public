@@ -1,12 +1,14 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { CreditCard, Home, LayoutDashboard, LogOut, UserRound, Zap } from "lucide-react";
+import { Activity, CreditCard, Home, LayoutDashboard, LogOut, UserRound, Zap } from "lucide-react";
 import type { ReactNode } from "react";
 import { signOut } from "@/lib/api.functions";
 import { Button } from "@/components/ui/button";
 
 const links = [
   { to: "/dashboard" as const, label: "Dashboard", icon: LayoutDashboard },
+  { to: "/expenses" as const, label: "Expenses", icon: CreditCard },
+  { to: "/activity" as const, label: "Activity", icon: Activity },
   { to: "/household" as const, label: "Household", icon: Home },
   { to: "/account" as const, label: "Account", icon: UserRound },
 ];
@@ -26,8 +28,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="flex h-full items-stretch border-x border-border">
             {links.map(({ to, label, icon: Icon }) => (
-              <Link key={to} to={to} aria-label={label} title={label} className={`flex min-w-12 items-center justify-center gap-2 border-r border-border px-3 font-mono text-xs uppercase transition-colors first:border-l-0 md:min-w-32 ${pathname === to ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-surface hover:text-foreground"}`}>
-                <Icon className="size-4" /><span className="hidden md:inline">{label}</span>
+              <Link key={to} to={to} aria-label={label} title={label} className={`flex min-w-10 items-center justify-center gap-2 border-r border-border px-2 font-mono text-xs uppercase transition-colors first:border-l-0 xl:min-w-28 ${pathname === to ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-surface hover:text-foreground"}`}>
+                <Icon className="size-4" /><span className="hidden xl:inline">{label}</span>
               </Link>
             ))}
           </nav>
