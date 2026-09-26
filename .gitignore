@@ -1,6 +1,6 @@
-node_modules/
-build/
-dist/
+*/node_modules/
+*/build/
+*/dist/
 coverage/
 .DS_Store
 *.log
@@ -8,5 +8,5 @@ coverage/
 !.env.example
 _old2
 __pycache__
-*/roommate_roulette.db*
-chore-frontend-lovable/
+# */roommate_roulette.db*
+*/.venv
