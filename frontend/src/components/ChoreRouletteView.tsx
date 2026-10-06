@@ -104,7 +104,7 @@ export const ChoreRouletteView: React.FC<ChoreRouletteViewProps> = ({
 }) => {
   const API_BASE_URL =
     apiBaseUrl ||
-    import.meta.env.VITE_API_URL ||
+    import.meta.env["API_BASE_URL"] ||
     'http://localhost:8000';
 
   const token =
@@ -263,8 +263,7 @@ export const ChoreRouletteView: React.FC<ChoreRouletteViewProps> = ({
   );
 
   const activeAssignee = useMemo(
-    () =>
-      roommates.find(
+    () => roommates.find(
         (roommate) => roommate.id === selectedChore?.currentAssigneeId,
       ),
     [roommates, selectedChore],
@@ -746,7 +745,7 @@ export const ChoreRouletteView: React.FC<ChoreRouletteViewProps> = ({
                   className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-2xl shadow-lg shadow-emerald-600/20 transition active:scale-95 disabled:opacity-50"
                 >
                   <CheckCircle2 className="w-5 h-5" />
-                  <span>Duty Completed</span>
+                  <span>Roullete of Chore</span>
                 </button>
 
                 <button
