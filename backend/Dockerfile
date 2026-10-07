@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY .
 # RUN uv pip install --no-cache-dir -r requirements.txt
 RUN uv pip install
 
